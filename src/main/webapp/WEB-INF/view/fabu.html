@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0" />
+    <title>发布</title>
+    <style>
+        *{ padding:0; margin:0; list-style:none;font-family: '黑体'}
+        html{background: #efeff4;}
+        ul,li{list-style: none;}
+        a{text-decoration: none}
+        section{margin-top: .18rem; font-size: .16rem;}
+        div{
+            background: #fff;
+            height:.43rem;
+            width: 3.45rem;
+            border-bottom: 1px solid #d9d9d9;
+            border-top: 1px solid #d9d9d9;
+            line-height: .43rem;
+            text-align: left;
+            padding-left: .15rem;
+            padding-right: .15rem;
+        }
+        .main_text{
+            height:1.86rem;
+            padding:.1rem .15rem;
+        }
+        .add{
+            height:.91rem;
+            width:.91rem;
+            margin-left: .15rem;
+            margin-top: .15rem;
+            position: relative;
+            border: 1px solid #d9d9d9;
+            padding: 0;
+        }
+        .add img{
+            height:.21rem;
+            width:.21rem;
+            position:absolute; left:0;top:0;right:0;bottom:0; margin: auto;
+        }
+        .amout{
+            margin-bottom: .13rem;
+        }
+        input[type="text"]{
+            width:100%;
+            border: transparent;
+            outline:none;
+            font-size: .15rem;
+            color: #666666;
+        }
+        textarea{
+          width:100%;
+          border: transparent;
+          outline:none;
+          font-size: .15rem;
+          color: #666666;
+      }
+        .ui_button {
+            display: inline-block;
+            height: .21rem;
+            width: .21rem;
+            text-align: center;
+            position:absolute; left:0;top:0;right:0;bottom:0; margin: auto;
+            background: url('img/add_03.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            -webkit-background-size: contain;
+            outline: 0 none;
+            overflow: visible;
+        }
+    </style>
+    <script>
+        (function(){
+            function change(){
+                var oHtml=document.querySelector('html');
+                oHtml.style.fontSize=document.documentElement.clientWidth/375*100+'px';
+            }
+
+            change();
+            window.addEventListener('resize',change,false);
+        })();
+
+
+    </script>
+</head>
+<body>
+<header></header>
+<section>
+
+    <form action="" method="post" enctype="multipart/form-data" target="">
+    <div class="amout ">
+        <input type="text" name="title" placeholder="标题" value="标题" autofocus required/>
+    </div>
+
+    <div class="main_text">
+        <textarea  rows="10">正文</textarea>
+
+    </div>
+   <div class="add">
+       <label class="ui_button " for="fileId"></label>
+       <input id="fileId" type="file" accept="image/*" name="file" style="position:absolute;clip:rect(0 0 0 0);" />
+   </div>
+        </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0" />
+    <title>今日最热</title>
+    <style>
+        *{ padding:0; margin:0; list-style:none;font-family: '黑体'}
+        html{background: #efeff4;}
+        ul,li{list-style: none;}
+        a{text-decoration: none}
+        section{margin-top: .18rem; font-size: .15rem;}
+        div.box{
+            background: #fff;
+          /*  height:.43rem;
+            width: 3.6rem;*/
+            border-bottom: 1px solid #d9d9d9;
+            border-top: 1px solid #d9d9d9;
+            /*padding:0  .14rem;*/
+            padding:.1rem  .14rem;
+            text-align: left;
+            margin-bottom: .15rem;
+        }
+        #back_btn{
+            float: right;
+            width:.1rem;
+            height:.18rem;
+            line-height:.53rem ;
+            font-size: .17rem;
+        }
+        .head{
+            background: url('img/head1.jpg');
+            display: inline-block;
+            width:.38rem;
+            height:.35rem;
+            -webkit-background-size: contain;
+            background-size: contain;
+            float: left;
+            margin-right: .19rem;
+        }
+        .head span{
+            float: left;
+        }
+        #more{
+            float: right;
+            line-height:.0001rem ;
+        }
+        #more .circle{
+            width: .05rem;
+            height:.05rem;
+            display: inline-block;
+            background: #cccccc;
+            border-radius: 50%;
+            margin-left: -3px;
+        }
+        .box_text{
+            background: #fff;
+           /* border-top: 1px solid #d9d9d9;*/
+            padding: .04rem 0;
+            color: #666666;
+            line-height: .18rem;
+        }
+        hr{
+            width: 3.59rem;
+            height:1px;
+            border:none;
+            border-top:1px solid #d9d9d9;
+            margin:.08rem 0;
+        }
+        .zan{
+            height:.24rem;
+           font-size: .18rem;
+            color: #666666;
+            text-align: right;
+            line-height: .24rem;
+        }
+        .zan img{
+            width: .15rem;
+            height:.18rem;
+            border-right: 20px solid transparent;
+            -webkit-filter: drop-shadow(red 20px 0);
+            filter: drop-shadow(red 20px 0);
+        }
+        .zan .unit{
+            float: left;
+            font-size: .15rem;
+            color: #999999;
+        }
+        .article_pic{
+            width:100%;
+            height:1.94rem;
+        }
+        .icon{
+            display: inline-block;
+            width: .15rem;
+            height:.18rem;
+            overflow: hidden;
+            line-height: .32rem;
+            vertical-align: middle;
+        }
+
+        .icon-del {
+            background: url('img/hao.png') no-repeat ;
+            background-size: contain;
+            -webkit-background-size: contain;
+        }
+        .icon-dislike {
+            background: url('img/cha.png') no-repeat ;
+            background-size: contain;
+            -webkit-background-size: contain;
+        }
+
+    </style>
+    <script>
+        (function(){
+            function change(){
+                var oHtml=document.querySelector('html');
+                oHtml.style.fontSize=document.documentElement.clientWidth/375*100+'px';
+            }
+
+            change();
+            window.addEventListener('resize',change,false);
+        })();
+        //点击事件
+        window.addEventListener('DOMContentLoaded',function(){
+            var oBox=document.querySelectorAll('.icon-del');
+            var dislike=document.querySelectorAll('.icon-dislike');
+            var toggle=true;
+            var toggle2=true;
+            var index=0
+       for(var i=0 ;i<oBox.length;i++){
+            oBox[i].index=i
+            dislike[i].index=i
+            oBox[i].toggle=true;
+            dislike[i].toggle2=true;
+
+            oBox[i].addEventListener('touchstart',function(ev){
+            if(dislike[this.index].toggle2==true || (dislike[this.index].toggle2==false && this.toggle == false )) {
+                if (this.toggle == true) {
+                   /* this.setAttribute('class', 'icon icon-del changeColor')*/
+                    this.style.background="url('img/hao_checked.png') no-repeat";
+                    this.style.backgroundSize='contain';
+                    this.style.webkitBackgroundSize='contain';
+                } else {
+                    this.style.background="url('img/hao.png') no-repeat";
+                    this.style.backgroundSize='contain';
+                    this.style.webkitBackgroundSize='contain';
+                }
+            }else{
+                return
+            }
+                this.toggle= !this.toggle;
+                function fnEnd(){
+                    document.removeEventListener('touchend',fnEnd,false);
+                }
+
+                document.addEventListener('touchend',fnEnd,false);
+                ev.preventDefault();
+            },false);
+
+            dislike[i].addEventListener('touchstart',function(ev){
+                if(this.toggle2==true && oBox[this.index].toggle==true){
+                  // this.setAttribute('class','icon icon-dislike changeColor')
+                    this.style.background="url('img/cha_checked.png') no-repeat";
+                    this.style.backgroundSize='contain';
+                    this.style.webkitBackgroundSize='contain';
+                }else{
+                    this.style.background="url('img/cha.png') no-repeat";
+                    this.style.backgroundSize='contain';
+                    this.style.webkitBackgroundSize='contain';
+                }
+
+                this.toggle2= !this.toggle2;
+                function fnEnd(){
+                    document.removeEventListener('touchend',fnEnd,false);
+                }
+
+
+                document.addEventListener('touchend',fnEnd,false);
+                ev.preventDefault();
+            },false);
+}
+        },false);
+
+    </script>
+</head>
+<body>
+<header></header>
+<section>
+    <!--第一个段落-->
+    <div class="box">
+        <div class="box_title">
+            <span class="head"></span>
+            <span style="font-size: .16rem;line-height:.2rem;">迷途小书童</span><br/>
+            <span style="font-size: .12rem;color: #999999;">今天 12:20</span>
+            <span id="more">
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+            </span>
+        </div>
+        <hr/>
+        <p class="box_text">
+            还是同一个地方，同一个季节，同一种淡淡的风～
+            我被这淡淡风，吹乱了年轻的心淡淡的风吹吧，吹走
+            了我的泪珠，吹走了我的哀愁，吹走了我的伤痕，吹
+            走了我的回忆与牵挂…该走的都已经走了该留下的没
+            有留下…我放弃我的一切，背上年轻的心—继续着我
+            的人生孤旅…</p>
+        <hr/>
+        <div class="zan clearfix">
+            <span class="unit">德州扑克技术探讨</span>
+            ￥32
+           <!--<img src="img/hao.png" align="center"/>-->
+            <span class="icon icon-del"></span>
+            |
+           <span class="icon icon-dislike"></span>
+        </div>
+    </div>
+<!--第二个段落-->
+    <div class="box">
+        <div class="box_title">
+            <span class="head"></span>
+            <span style="font-size: .16rem;line-height:.2rem;">小小向日葵</span><br/>
+            <span style="font-size: .12rem;color: #999999;">45分钟前</span>
+            <span id="more">
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+            </span>
+        </div>
+        <hr/>
+       <!-- <p class="box_text">
+            还是同一个地方，同一个季节，同一种淡淡的风～
+            我被这淡淡风，吹乱了年轻的心淡淡的风吹吧，吹走
+            了我的泪珠，吹走了我的哀愁，吹走了我的伤痕，吹
+            走了我的回忆与牵挂…该走的都已经走了该留下的没
+            有留下…我放弃我的一切，背上年轻的心—继续着我
+            的人生孤旅…</p>-->
+        <img class="article_pic" src="img/article_pic_03.jpg"/>
+        <hr/>
+        <div class="zan clearfix">
+
+            <span class="unit"> 感动我们的图片</span>
+            ￥32
+            <span class="icon icon-del"></span>
+            |
+            <span class="icon icon-dislike"></span>
+        </div>
+    </div>
+    <!--第三个段落-->
+    <div class="box">
+        <div class="box_title">
+            <span class="head"></span>
+            <span style="font-size: .16rem;line-height:.2rem;">小小向日葵</span><br/>
+            <span style="font-size: .12rem;color: #999999;">45分钟前</span>
+            <span id="more">
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+            </span>
+        </div>
+        <hr/>
+        <img class="article_pic" src="img/article_pic_06.jpg"/>
+        <p class="box_text">
+            即使我是一棵仙人球，也偶尔需要用雨水浇灌，哪怕
+            只有一滴二滴三滴四滴……至少，让我有勇气和信心
+            去企盼那迷人的雨季</p>
+
+        <hr/>
+        <div class="zan clearfix">
+            <span class="unit"> 感动我们的图片</span>
+            ￥32
+            <span class="icon icon-del"></span>
+            |
+           <span class="icon icon-dislike"></span>
+        </div>
+    </div>
+</section>
+</body>
+</html>

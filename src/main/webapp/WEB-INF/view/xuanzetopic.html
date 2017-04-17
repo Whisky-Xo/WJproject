@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0" />
+    <title>选择频道</title>
+    <style>
+        *{ padding:0; margin:0; list-style:none;font-family: '黑体'}
+        html{background: #efeff4;}
+        ul,li{list-style: none;}
+        a{text-decoration: none;color: #000;}
+        header{
+           /* height:.62rem;*/
+        }
+
+        section{
+           /* margin-top: .18rem;*/
+            font-size: .16rem;
+        }
+        ul.part{
+            background: #fff;
+            border-bottom: 1px solid #d9d9d9;
+            border-top: 1px solid #d9d9d9;
+            color: #333333;
+           /* margin-bottom: .22rem;*/
+        }
+        ul.part li{
+            height:.43rem;
+            width: 3.63rem;
+            line-height: .43rem;
+            padding-left: .12rem;
+         /*  border-bottom: 2px solid transparent;
+            border-top: 2px solid transparent;*/
+        }
+        ul.part li:nth-last-child(1){
+            border-bottom: 0px solid transparent;
+        }
+        .letter{
+            color: #999999;
+            font-size: .15rem;
+            margin-left: .12rem;
+            height: .22rem;
+            line-height: .23rem;
+        }
+        .alert{
+            display: none;
+            width:2.7rem;
+            height: 1.05rem;
+            border-radius: 10px;
+            color: #666;
+            text-align: center;
+            font-size: .17rem;
+            background: #fff;
+            margin: 0 auto;
+            margin-top: .45rem;
+            padding: 0;
+        }
+        .alert a{
+            width: 50%;
+            height:.41rem;
+            display: inline-block;
+            float: left;
+            line-height: .41rem;
+            box-sizing: border-box;
+            color: #007aff;
+}
+        .alert a:nth-of-type(1){
+            border-right: 1px solid #ccc;
+        }
+        .alert p{
+            width: 100%;
+            height:.45rem;
+           /* line-height: .2rem;*/
+            border-bottom:solid 1px  #ccc;
+            padding-top:.1rem;
+            padding-bottom: .07rem;
+            color: #010101;
+        }
+        hr{
+            width: 3.63rem;
+            height:1px;
+            border:none;
+            border-top:1px solid #d9d9d9;
+            margin-left: .12rem;
+            margin-top: -1px;
+            /*margin-bottom: -1px;*/
+        }
+    </style>
+    <script>
+        (function(){
+            function change(){
+                var oHtml=document.querySelector('html');
+                oHtml.style.fontSize=document.documentElement.clientWidth/375*100+'px';
+            }
+
+            change();
+            window.addEventListener('resize',change,false);
+        })();
+        //点击事件
+        window.addEventListener('DOMContentLoaded',function(){
+            var oBox=document.querySelectorAll('.part li');
+            var alert=document.querySelector('.alert');
+            var cg=document.getElementById('cg');
+            var cancel=document.getElementById('cancel_btn');
+           // var hr=document.getElementsByName('hr');
+   for(var i=0;i<oBox.length;i++){
+         oBox[i].addEventListener('touchstart',function(ev){
+         for(var j=0;j<oBox.length;j++){
+            oBox[j].style.background='#fff';
+        }
+
+        cg .innerHTML=this.innerHTML
+        alert.style.display='block';
+        this.style.background='#ccc';
+
+        function fnEnd(){
+            document.removeEventListener('touchend',fnEnd,false);
+        }
+        this.addEventListener('touchend',fnEnd,false);
+        ev.preventDefault();
+    },false);
+}
+            cancel.addEventListener('touchstart',function(ev){
+                alert.style.display='none';
+                for(var j=0;j<oBox.length;j++){
+                    oBox[j].style.background='#fff'
+                }
+                function fnEnd(){
+                    document.removeEventListener('touchend',fnEnd,false);
+                }
+                this.addEventListener('touchend',fnEnd,false);
+                ev.preventDefault();
+            },false)
+})
+
+
+    </script>
+</head>
+<body>
+<header></header>
+<section>
+    <div class="letter">A</div>
+    <ul class="part">
+        <li>着装秀</li><hr/>
+        <li>德州扑克技术讨论</li><hr/>
+        <li>我要投稿</li>
+    </ul>
+    <div class="letter">B</div>
+    <ul class="part">
+        <li>婴幼儿教育</li><hr/>
+        <li>今日最热</li><hr/>
+        <li>我要投稿</li><hr/>
+        <li>发现频道</li>
+    </ul>
+    <div class="alert">
+       <p> <span>发布到</span>
+           <br/>
+    <span id="cg"></span>
+       </p>
+        <a id="cancel_btn" >取消</a>
+        <a id="confirm_btn" href="#">确定</a>
+    </div>
+
+</section>
+
+</body>
+</html>

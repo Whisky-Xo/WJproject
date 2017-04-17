@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property resource="logback.properties" />
+    <property name="LOG_HOME" value="${java.io.tmpdir}/../logs/"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="COMMON-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/common.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/common.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>180</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+    <appender name="ACCESS-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/access.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/access.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>180</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+
+    <!--<appender name="ASSET-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${LOG_HOME}/asset.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_HOME}/asset.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--<maxHistory>180</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <!--<immediateFlush>${log.flush:-true}</immediateFlush>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+    <!--<appender name="ITEM-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${LOG_HOME}/item.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_HOME}/item.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--<maxHistory>180</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <!--<immediateFlush>${log.flush:-true}</immediateFlush>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+    <!--<appender name="LOAN-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${LOG_HOME}/loan.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_HOME}/loan.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--<maxHistory>180</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <!--<immediateFlush>${log.flush:-true}</immediateFlush>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+    <!--<appender name="FINANCE-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${LOG_HOME}/finance.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_HOME}/finance.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--<maxHistory>180</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <!--<immediateFlush>${log.flush:-true}</immediateFlush>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+    <!--<appender name="BILL-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${LOG_HOME}/repay.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_HOME}/repay.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--<maxHistory>180</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <!--<immediateFlush>${log.flush:-true}</immediateFlush>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+    <appender name="SQL-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/sql.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/sql.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>180</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+
+    <logger name="COMMON" level="INFO" additivity="false">
+        <appender-ref ref="COMMON-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="ACCESS" level="INFO" additivity="false">
+        <appender-ref ref="ACCESS-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="ASSET" level="INFO" additivity="false">
+        <appender-ref ref="COMMON-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="ITEM" level="INFO" additivity="false">
+        <appender-ref ref="COMMON-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="LOAN" level="INFO" additivity="false">
+        <appender-ref ref="COMMON-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="FINANCE" level="INFO" additivity="false">
+        <appender-ref ref="COMMON-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="BILL" level="INFO" additivity="false">
+        <appender-ref ref="COMMON-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="com.kkdai" level="INFO" additivity="false">
+        <appender-ref ref="COMMON-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <!--log4jdbc -->
+    <logger name="jdbc.sqltiming" level="${jdbc.sqltiming}"  additivity="false">
+        <appender-ref ref="SQL-FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.sqlonly" level="OFF"/>
+    <logger name="jdbc.audit" level="OFF"/>
+    <logger name="jdbc.resultset" level="OFF"/>
+    <logger name="jdbc.connection" level="OFF"/>
+
+    <logger name="org.springframework.web" level="ERROR"/>
+    <logger name="org.springframework.beans" level="ERROR"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="COMMON-FILE"/>
+    </root>
+</configuration>

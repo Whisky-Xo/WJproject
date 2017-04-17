@@ -1,0 +1,99 @@
+/* 禁用iPhone中Safari的字号自动调整 */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+}
+/* 去除iPhone中默认的input样式  清除苹果浏览器的圆角表单*/
+input[type="submit"],
+
+input[type="reset"],
+
+input[type="button"],
+
+input{-webkit-appearance:none; resize: none;}
+/* 取消链接高亮  */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article, 
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); }
+/* 设置HTML5元素为块 */
+article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section {
+display: block;
+}
+/* 图片自适应 */
+img {
+max-width: 100%;
+height: auto;
+width:auto\9; /* ie8 */
+-ms-interpolation-mode:bicubic;/*为了照顾ie图片缩放失真*/
+}
+/* 初始化 */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article, 
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section,b,p1{margin:0; padding:0; border:none;}
+body{font-family: Microsoft YaHei,Tahoma,Arial,sans-serif; color:#555; background-color:#F7F7F7;}
+em,i{font-style:normal;}
+strong{font-weight: normal;}
+.clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
+.clearfix{zoom:1;}
+a{text-decoration:none; color:#969696; font-family: Microsoft YaHei,Tahoma,Arial,sans-serif;}
+a:hover{ text-decoration:none;}
+ul,ol{list-style:none;}
+h1, h2, h3, h4, h5, h6{ font-size:100%; font-family: Microsoft YaHei;}
+img{border: none;}
+.scope{min-width:320px; max-width:540px;}
+
+/*votePage页*/
+html,body{width:100%; height:100%;}
+.bg_blue{background:-webkit-linear-gradient(top,#a8daf9,#3aa6f1);}
+.td_banner{width:100%;}
+.td_banner img{width:100%; height:auto; display:block;}
+.vote_wrap{padding:15px 25px; background:-webkit-linear-gradient(top,#a8daf9,#3aa6f1);}
+.vote{background:#fff; border-radius:20px; position:relative; padding:15px 15px 51px; margin-bottom:15px;}
+.vote2{width:85%; height:10%; background: url(../img/td_bg.png) left center no-repeat; background-size:contain; position:absolute; top:10px; left:-22px;box-sizing:border-box;}
+.vote2 h3 {height:35px;line-height:35px;font-size:16px; font-weight:normal; color:#fff;padding-left:35px;}
+.photo{margin-top:15px;}
+.photo img{display:block;}
+.census{height:65px; margin:10px 0; color:#fff; text-align:center;}
+.census div{background:#6abdf5; border-radius:8px; height:45px; width:49%; padding-top:11px; box-sizing:border-box;}
+.census .cenleft{float:left;}
+.census .cenright{float:right;}
+.census p{font-size:16px; margin-bottom:4px;}
+.census span{font-size:12px; display:block;}
+.enounce{color:#000; font-size:14px; margin-bottom:10px;}
+.enounce span{color:#fc9c1b; font-size:16px;}
+.vote button{width:130px; height:36px; line-height:36px; font-weight:bold; font-size:16px; color:#fff; background:-webkit-linear-gradient(top,#febb36,#fc9a19); border-radius:6px; position:absolute; left:50%; margin-left:-65px; border:0; box-shadow:0px 2px 7px -1px #a76506;}
+.bestrow{width:100%; height:100%; background:rgba(0,0,0,0.6); position:fixed; top:0; left:0; display:none;}
+.bestrow div{width:220px; height:130px; background: #fbe196 url(../img/tp_er.png) 0 13px no-repeat; background-size:32%; color:#000; font-size: 18px; line-height:112px; text-align:center; position:absolute; left:50%; top:50%; margin-top:-56px; margin-left:-105px;}
+.bestrow img{margin-left:56px; margin-top:50px; width:64%;}
+/*trophyPage页*/
+.census_wrap{position:relative;}
+.censu{height:90px; width:100%; background:#ffeba7; margin:0;color:#000;}
+.censu li{float:left; width:33.33%; height:70px; border-right:2px solid #dfc66f; box-sizing:border-box; padding-top:15px;}
+.censu .no_border{border:0;}
+.censu p{font-size:18px; text-align:center;}
+.censu span{font-size:15px; display:block; text-align:center; margin-top:3px;}
+.census_img{display:block; width:100%; position:absolute; left:0; top:85px;}
+.wrap{background:-webkit-linear-gradient(top,#a8daf9,#3aa6f1);}
+.search_wrap{padding:25px 45px 15px; overflow:hidden;}
+.search_wrap input{width:75%; height:35px; line-height:35px; font-size:14px; color:#999; padding-left:10px; box-sizing:border-box; border-radius:5px 0 0 5px; box-shadow:0px 1px 7px -1px #a76506; float:left;}
+.search_wrap button{width:25%; height:35px; line-height:35px; font-size:15px; color:#fff; background:-webkit-linear-gradient(top,#febb36,#fc9a19); box-shadow:0px 1px 7px -1px #a76506; border-radius:0 5px 5px 0;  float:left;}
+.ranking{padding:0 15px 15px;}
+.rank_btn{width:100%; margin-bottom:10px; overflow:hidden;}
+.rank_btn button{width:30%; height:35px; line-height:35px; text-align:center; font-size:15px; color:#000; background:#fff; box-shadow:0px 1px 7px -1px #a76506; float:left;}
+.rank_btn .btn_c{background:-webkit-linear-gradient(top,#febb36,#fc9a19); color:#fff;}
+.rank_content{ width:100%; overflow:hidden;}
+.rank_content div{width:30%; margin:1.6%; background:#fff; float:left; padding:7px 5px 50px; box-sizing:border-box; position:relative;}
+/* .rank_content .cleft{float:left;}
+.rank_content .cright{float:right;} */
+.rank_content div img{display:block; margin-bottom:8px;height:70px}
+.rank_content div p{font-size:13px; color:#000; height:70px; line-height:20px; text-align:center;}
+.rank_content div b span{color:#d81d1d;}
+.rank_content div button{width:80%; height:30px; line-height:30px; text-align:center; color:#fff; position:absolute; left:50%; margin-left:-40%; bottom:8px; border-radius:5px; background:-webkit-linear-gradient(top,#febb36,#fc9a19); box-shadow:0px 1px 7px -1px #a76506; font-weight:bold;}
+.rank_content div .t_name{ height:135px;text-align: left;}
+.show .census_wrap{ }
+.showfont{ font-size: 12px; padding:20px; line-height: 22px; color: #111111}
+.warn{ color: #666666}
+.show .census_wrap button{    position: absolute; color: #fff; padding:10px 20px; border-radius: 3px;
+    top: 20px; left: 50%;   background: -webkit-linear-gradient(top,#febb36,#fc9a19);}
+    .census_wrap img{    width: 100%;
+    height: auto;
+    display: block;}

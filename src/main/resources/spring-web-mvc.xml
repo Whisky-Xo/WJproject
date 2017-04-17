@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+    
+    
+    <mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="com.aaread.config.JSONHttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+    <!-- 设置使用注解的类所在的jar包 -->
+    <context:component-scan base-package="com.aaread.controller"></context:component-scan>
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />  
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >  
+         <property name="messageConverters">  
+              <list>
+                 <ref bean="mappingJacksonHttpMessageConverter"/>
+              </list>
+         </property>  
+     </bean>  
+     <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
+           <property name="supportedMediaTypes">  
+               <list>  
+                  <value>text/html;charset=UTF-8</value>  
+               </list>  
+           </property>  
+    </bean>
+	
+	<mvc:resources mapping="/static/**" location="/static/" /> 
+	<mvc:resources mapping="/favicon.ico" location="/favicon.ico"/> 
+	<mvc:resources mapping="/css/**" location="/css/"/> 
+	<mvc:resources mapping="/js/**" location="/js/"/> 
+	<mvc:resources mapping="/img/**" location="/img/"/> 
+	<mvc:resources mapping="/fonts/**" location="/fonts/"/> 
+	<mvc:resources mapping="/images/**" location="/images/"/> 
+	<mvc:resources mapping="/picture/**" location="/picture/"/> 
+	
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="text/html" />
+			</map>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" >
+				   <property name="contentType" value="text/html;charset=UTF-8" />
+				</bean>
+			</list>
+		</property>
+		<property name="ignoreAcceptHeader" value="true" />
+	</bean>
+
+
+	<!-- Saves a locale change using a cookie -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+
+    <!-- 支持上传文件 --> 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      <property name="maxUploadSize" value="8097152"></property>   
+    </bean>
+    
+	
+	<import resource="freemarker.xml"/>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*.do" />
+			<mvc:mapping path="/**/*.html" />
+			<mvc:mapping path="/*" />
+			<bean class="com.aaread.interceptor.LoginInterceptor">
+			    <property name="redis" ref="redisCacheImpl" />
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>

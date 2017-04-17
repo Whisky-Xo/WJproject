@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0" />
+    <title>消息底级页</title>
+    <style>
+        *{ padding:0; margin:0; list-style:none;font-family: '黑体'}
+        html{background: #efeff4;}
+        ul,li{list-style: none;}
+        a{text-decoration: none}
+        section{margin-top: .18rem; font-size: .15rem;}
+        div.wrap{
+            width: 3.75rem;
+            line-height: .22rem;
+            text-align: left;
+            /*padding-left: .15rem;*/
+        }
+        .wrap div{
+            margin-bottom: .18rem;
+        }
+        .time{
+            color: #a5a5a6;
+            line-height: .22rem;
+            text-align: center;
+            margin-bottom: .1rem;
+        }
+        .head{
+            /* background: url('img/head2.jpg');*/
+            display: inline-block;
+            width:.41rem;
+            height:.41rem;
+            border-radius: 50%;
+            -webkit-background-size: cover;
+            background-size: cover;
+            /*overflow: hidden;*/
+            vertical-align: middle;
+            margin-right: .1rem;
+            margin-left: .15rem;
+            /*float: left;*/
+        }
+
+        .head span{
+            float: left;
+        }
+        .right{
+            min-height:.42rem;
+            text-align: right;
+            display:table;
+            width:100%;
+            /*float: right;*/
+        }
+        span.head.p1{
+             background: url('img/head1.jpg');
+             -webkit-background-size: cover;
+             background-size: cover;
+         }
+        span.head.p2{
+            background: url('img/head2.jpg');
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+        b {
+            width: .01rem;
+            height: 0px;
+            line-height: 0;
+            border-width: .1rem .062rem;
+            /* border-top-width: .07rem; */
+            /* border-left-width: .02rem; */
+            border-style: solid;
+            border-color: #44cc5b #efeff4 #efeff4;
+            display: inline-block;
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            vertical-align: middle;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            left: -.148rem;
+            top: calc(50% - .1rem);
+        }
+        .right b{
+            border-color: #e3c094 #efeff4 #efeff4;
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            position: absolute;
+            left: calc(100% + .03rem);
+            top: calc(50% - .1rem);
+        }
+       .msg_bar{
+           /*min-height: .42rem;*/
+           background:#44cc5b ;
+           display: inline-block;
+           border-radius: .11rem;
+           padding: .14rem .13rem;
+           margin-left: .022rem;
+           position: relative;
+       }
+        .right .msg_bar{
+            background:#e3c094 ;
+            /*float: right;*/
+            max-width: 2.6rem;
+            text-align: left;
+        }
+        .right .head.p2{
+            /*float: right;*/
+            margin-left: .2rem;
+            margin-right: .15rem;
+            vertical-align: middle;
+        }
+        .table-cell{
+            display:table-cell;
+            vertical-align: middle;
+        }
+        .left{
+           /* float: left;*/
+            width:100%;
+            display: table;
+        }
+        .head_container{
+            width: .76rem;
+        }
+
+        .msg_text{
+            vertical-align: middle;
+            line-height: .42rem;
+        }
+    </style>
+    <script>
+        (function(){
+            function change(){
+                var oHtml=document.querySelector('html');
+                oHtml.style.fontSize=document.documentElement.clientWidth/375*100+'px';
+            }
+
+            change();
+            window.addEventListener('resize',change,false);
+        })();
+
+
+    </script>
+</head>
+<body>
+<header></header>
+<section>
+    <div class="wrap ">
+        <p class="time">2016/07/12 12:23</p>
+    <div class="left">
+        <div class="table-cell head_container"><span class="head p1"></span></div>
+        <p class="msg_bar"><b></b>你好晴天</p>
+    </div>
+
+        <div class="right " style="margin-bottom: .25rem">
+            <div class="table-cell"> <p class="msg_bar"><b></b>你好我喜欢你写的文章</p></div>
+            <div class="table-cell head_container"><span class="head p2 "></span></div>
+           
+        </div>
+
+        <div class="left">
+            <div class="table-cell head_container"><span class="head p1"></span></div>
+            <p class="msg_bar"><b></b>你是哪里人啊是北京吗</p>
+        </div>
+        <p class="time">今天14:56</p>
+        <div class="right ">
+
+            <div class="table-cell"><p class="msg_bar "><b></b>黑龙江的</p></div>
+            <div class="table-cell head_container"><span class="head p2 "></span></div>
+        </div>
+
+    </div>
+
+
+</section>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 配置Redis Pool -->
+	<bean id="shardedPoolManager" class="com.aaread.redis.jedis.ShardedPoolManagerFactory">
+		<!-- 1=sentinel 2=keepalived -->
+		<property name="failOver">
+			<value>${phoenix.redis.failover}</value>
+		</property>
+
+		<!-- 0=求余哈希 1=一致性哈希 -->
+		<property name="hashingAlg">
+			<value>${phoenix.redis.hashingalg}</value>
+		</property>
+
+		<property name="poolConfig">
+			<value>${phoenix.redis.poolconfig}</value>
+		</property>
+	</bean>
+
+	<bean id="redisCacheImpl" class="com.aaread.redis.client.RedisCacheImpl">
+		<property name="shardedPoolManager" ref="shardedPoolManager" />
+	</bean>
+	
+</beans>
